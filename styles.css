@@ -1,0 +1,46 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #FFF2D8;
+}
+
+:root {
+    --grid-rows: 1;
+    --grid-columns: 1;
+    --text-color: #113946;
+}
+
+h1 {
+    font-size: 72px;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    color: var(--text-color);
+}
+
+#center {
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    height: 500px;
+    width: 500px;
+}
+  
+.grid {
+    background: white;
+}
+
+.grid-black {
+    background: black;
+}
+
+.grid:hover {
+    cursor: pointer;
+}
