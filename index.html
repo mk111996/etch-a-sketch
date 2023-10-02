@@ -9,11 +9,19 @@
 </head>
 <body>
     <h1>Sketchy Pad</h1>
+    
     <div id="center">
-    <div id="container">
-
+        <div id="container"></div>
     </div>
-    </div>
+    
+    <div id="options">
+        <span id="h3-bg"><h3>Grid size: <span id="grid-size"></span></h3></span>
+        <input type="range" id="change-size" min="1" max="64" range="1" value="32"/>
+        <button id="black">Black</button>
+        <button id="random-color"><span id="display-color">#000000</span></button>
+        <button id="reset">Clear</button>
+        <button id="eraser">Erase</button>
+</div>
     <script src="script.js" charset="UTF-8"></script>
 </body>
 </html>
