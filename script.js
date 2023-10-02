@@ -1,7 +1,15 @@
 const container = document.getElementById("container");
-let grid = document.querySelectorAll(".grid");
-const rows = 16;
-const columns = 16;
+const removeGrid = document.querySelector("#reset");
+const gridSize = document.getElementById("grid-size");
+const changeSize = document.querySelector("#change-size");
+const eraseAction = document.querySelector("#eraser");
+const randomColor = document.querySelector("#random-color");
+const displayColor = document.querySelector("#display-color");
+
+let rows = 32;
+let columns = 32;
+
+gridSize.textContent = (rows + " x " + columns);
 
 function createGrid(rows, columns) {
   container.style.setProperty('--grid-rows', rows);
@@ -14,3 +22,31 @@ function createGrid(rows, columns) {
 };
 
 createGrid(rows, columns);
+
+function getRandomColor() {
+  let result = "#" + (Math.random() * 0xFFFFFF<<0).toString(16);
+  if (result.length < 7) {
+  displayColor.textContent = result; 
+  }
+}
+
+randomColor.addEventListener("click", () => {
+  getRandomColor();
+})
+
+container.addEventListener("mouseover", (event) => {
+    event.target.style.background = "black";
+  });
+
+removeGrid.addEventListener("click", () => {
+  container.innerHTML = "";
+  createGrid(rows, columns);
+})
+
+changeSize.addEventListener("input", () => {
+  rows = changeSize.value;
+  columns = changeSize.value;
+  gridSize.textContent = (rows + " x " + columns);
+  container.innerHTML = "";
+  createGrid(rows, columns);
+});
