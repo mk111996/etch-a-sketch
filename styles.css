@@ -122,3 +122,10 @@ h3 {
     font-size: 18px;
     font-weight: bold;
 }
+
+#color-check {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background: black;
+}
