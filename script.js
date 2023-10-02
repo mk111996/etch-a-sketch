@@ -5,6 +5,8 @@ const changeSize = document.querySelector("#change-size");
 const eraseAction = document.querySelector("#eraser");
 const randomColor = document.querySelector("#random-color");
 const displayColor = document.querySelector("#display-color");
+const blackColor = document.querySelector("#black");
+const colorCheck = document.querySelector("#color-check");
 
 let rows = 32;
 let columns = 32;
@@ -24,18 +26,21 @@ function createGrid(rows, columns) {
 createGrid(rows, columns);
 
 function getRandomColor() {
-  let result = "#" + (Math.random() * 0xFFFFFF<<0).toString(16);
-  if (result.length < 7) {
-  displayColor.textContent = result; 
+  const colorArray = "0123456789ABCEDF";
+  let color = "#";
+  for (i = 0; i < 6; i++) {
+    color += colorArray[Math.floor(Math.random() * colorArray.length)];
   }
+  displayColor.textContent = color;
+  colorCheck.style.background = color;
 }
 
 randomColor.addEventListener("click", () => {
   getRandomColor();
-})
+}); 
 
 container.addEventListener("mouseover", (event) => {
-    event.target.style.background = "black";
+    event.target.style.background = displayColor.textContent;
   });
 
 removeGrid.addEventListener("click", () => {
@@ -50,3 +55,14 @@ changeSize.addEventListener("input", () => {
   container.innerHTML = "";
   createGrid(rows, columns);
 });
+
+blackColor.addEventListener("click", () => {
+  displayColor.textContent = "#000000";
+  colorCheck.style.background = "WHITE";
+});
+
+eraseAction.addEventListener("click", () => {
+  displayColor.textContent = "#FFFFFF";
+  colorCheck.style.background = "WHITE";
+});
+
